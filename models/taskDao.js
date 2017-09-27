@@ -12,6 +12,8 @@ function TaskDao(documentDBClient, databaseId, collectionId) {
     this.collection = null;
 }
 
+module.exports = TaskDao;
+
 TaskDao.prototype = {
     init: function (callback) {
         var self = this;
@@ -99,5 +101,3 @@ TaskDao.prototype = {
         });
     }
 };
-
-module.exports = TaskDao;
