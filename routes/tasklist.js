@@ -10,7 +10,7 @@ function TaskList(taskDao) {
 module.exports = TaskList;
 
 TaskList.prototype = {
-    showTasks = function (req, res) {
+    showTasks: function (req, res) {
         var self = this;
 
         var querySpec = {
@@ -32,7 +32,7 @@ TaskList.prototype = {
             });
         });
     },
-    
+
     addTask: function (req, res) {
         var self = this;
         var item = req.body;
