@@ -32,7 +32,7 @@ var docDbClient = new DocumentDBClient(config.host, {
 });
 var taskDao = new TaskDao(docDbClient, config.databaseId, config.collectionId);
 var taskList = new TaskList(taskDao);
-taskDao.init(function() { console.log("error");});
+taskDao.init(function(err) { console.error(err.stack); });
 
 app.get('/', taskList.showTasks.bind(taskList));
 app.post('/addtask', taskList.addTask.bind(taskList));
