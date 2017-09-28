@@ -22,6 +22,7 @@ paths:
       # our controller name
       x-swagger-router-controller: rental
       get:
+        operationId: getAll
         description: get the rentals list
         # define the type of response for Success "200" and Error
         responses:
