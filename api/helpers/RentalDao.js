@@ -57,27 +57,6 @@ var RentalDao = {
                 resolve({data: results});
             })
         });
-    },
-
-    getItem: function (itemId) {
-        var self = this;
-
-        return new Promise((resolve, reject) => {
-            var querySpec = {
-                query: 'SELECT * FROM root r WHERE r.id = @id',
-                parameters: [{
-                    name: '@id',
-                    value: itemId
-                }]
-            };
-            self.client.queryDocuments(self.collection._self, querySpec).toArray(function (err, results) {
-                if (err) {
-                    reject(err);
-                    return;
-                }
-                resolve({data: results[0]});
-            });
-        });
     }
 };
 
