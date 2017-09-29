@@ -42,6 +42,13 @@ var RentalDao = {
             if (err) {
                 callback(err);
             } else {
+                results.forEach(function(rental, index) {
+                    delete rental._rid;
+                    delete rental._self;
+                    delete rental._etag;
+                    delete rental._attachments;
+                    delete rental._ts;
+                });
                 callback(null, results);
             }
         });
