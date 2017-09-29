@@ -1,6 +1,6 @@
 'use strict';
 
-var rentalDao = require('../helpers/RentalDao');
+var rentalDao = require('../helpers/rentalDao.js');
 
 module.exports = { getAll };
 
@@ -14,7 +14,7 @@ function getAll(req, res, next) {
         if (err) {
             throw (err);
         }
-
+        console.log(items);
         res.json( items );
     });
 }

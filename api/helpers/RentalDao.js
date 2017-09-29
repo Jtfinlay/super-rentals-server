@@ -8,15 +8,6 @@ var docDbClient = new DocumentDBClient(azureConfig.host, {
     masterKey: azureConfig.authKey
 });
 
-function RentalDao(documentDBClient, databaseId, collectionId) {
-    this.client = documentDBClient;
-    this.databaseId = databaseId;
-    this.collectionId = collectionId;
-
-    this.database = null;
-    this.collection = null;
-}
-
 var RentalDao = {
     client: docDbClient,
     databaseId: azureConfig.databaseId,

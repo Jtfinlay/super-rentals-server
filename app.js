@@ -8,8 +8,7 @@ var config = {
   appRoot: __dirname // required config
 };
 
-var RentalDao = require('./api/helpers/rentalDao');
-
+var RentalDao = require('./api/helpers/rentalDao.js');
 RentalDao.init( function(err) {
   // TODO - error
   console.log(err);
