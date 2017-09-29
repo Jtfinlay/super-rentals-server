@@ -78,9 +78,14 @@ definitions:
       - type
       - attributes
   GetRentalsListResponse:
-    type: array
-    items:
-      $ref: "#/definitions/Rental"
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/Rental"
+    required:
+      - data
   ErrorResponse:
     required:
       - message

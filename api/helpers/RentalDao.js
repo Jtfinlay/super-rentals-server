@@ -54,7 +54,7 @@ var RentalDao = {
                     delete rental._attachments;
                     delete rental._ts;
                 });
-                resolve(results);
+                resolve({data: results});
             })
         });
     },
@@ -75,7 +75,7 @@ var RentalDao = {
                     reject(err);
                     return;
                 }
-                resolve(results[0]);
+                resolve({data: results[0]});
             });
         });
     }
