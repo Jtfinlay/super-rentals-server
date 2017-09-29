@@ -2,6 +2,11 @@
 
 var DocumentDBClient = require('documentdb').DocumentClient;
 var docdbUtils = require('./docdbUtils');
+var azureConfig = require('./azureConfig');
+
+var docDbClient = new DocumentDBClient(azureConfig.host, {
+    masterKey: azureConfig.authKey
+});
 
 function RentalDao(documentDBClient, databaseId, collectionId) {
     this.client = documentDBClient;
@@ -12,9 +17,14 @@ function RentalDao(documentDBClient, databaseId, collectionId) {
     this.collection = null;
 }
 
-module.exports = RentalDao;
+var RentalDao = {
+    client: docDbClient,
+    databaseId: azureConfig.databaseId,
+    collectionId: azureConfig.collectionId,
+    
+    database: null,
+    collection: null,
 
-RentalDao.prototype = {
     init: function (callback) {
         var self = this;
 
@@ -66,3 +76,5 @@ RentalDao.prototype = {
         });
     }
 };
+
+module.exports = RentalDao;

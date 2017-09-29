@@ -8,6 +8,13 @@ var config = {
   appRoot: __dirname // required config
 };
 
+var RentalDao = require('./api/helpers/rentalDao');
+
+RentalDao.init( function(err) {
+  // TODO - error
+  console.log(err);
+});
+
 SwaggerExpress.create(config, function(err, swaggerExpress) {
   if (err) { throw err; }
 
