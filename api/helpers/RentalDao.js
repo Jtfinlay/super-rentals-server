@@ -42,13 +42,11 @@ var RentalDao = {
         var self = this;
 
         return new Promise((resolve, reject) => {
-            console.log('in promise')
             self.client.queryDocuments(self.collection._self, querySpec).toArray(function (err, results) {
                 if (err) {
                     reject(err);
                     return;
                 }
-                console.log('in query docs');
                 results.forEach(function(rental, index) {
                     delete rental._rid;
                     delete rental._self;
@@ -56,7 +54,6 @@ var RentalDao = {
                     delete rental._attachments;
                     delete rental._ts;
                 });
-                console.log('results all done')
                 resolve(results);
             })
         });

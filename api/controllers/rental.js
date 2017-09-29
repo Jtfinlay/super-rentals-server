@@ -10,8 +10,6 @@ function getAll(req, res, next) {
         query: 'SELECT * FROM root r'
     };
 
-    console.log('getAll')
-
     return rentalDao.find(querySpec)
     .then( (results) => {
       res.json( results );  
