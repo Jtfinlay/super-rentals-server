@@ -10,11 +10,12 @@ function getAll(req, res, next) {
         query: 'SELECT * FROM root r'
     };
 
-    rentalDao.find(querySpec, function(err, items) {
-        if (err) {
-            throw (err);
-        }
-        console.log(items);
-        res.json( items );
+    console.log('getAll')
+
+    return rentalDao.find(querySpec)
+    .then( (results) => {
+      res.json( results );  
+    }).catch( (err) => {
+      throw (err);  
     });
 }

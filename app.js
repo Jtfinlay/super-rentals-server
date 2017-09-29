@@ -9,21 +9,20 @@ var config = {
 };
 
 var RentalDao = require('./api/helpers/rentalDao.js');
-RentalDao.init( function(err) {
-  // TODO - error
-  console.log(err);
-});
 
 SwaggerExpress.create(config, function(err, swaggerExpress) {
   if (err) { throw err; }
 
-  // install middleware
-  swaggerExpress.register(app);
+  // setup database access object
+  RentalDao.init().then(function() {
+    
+    // install middleware
+    swaggerExpress.register(app);
+  
+    var port = process.env.PORT || 10010;
+    app.listen(port);
 
-  var port = process.env.PORT || 10010;
-  app.listen(port);
-
-  if (swaggerExpress.runner.swagger.paths['/hello']) {
-    console.log('try this:\ncurl http://127.0.0.1:' + port + '/hello?name=Scott');
-  }
+  }).catch( (err) => {
+    console.log(err);
+  });
 });
